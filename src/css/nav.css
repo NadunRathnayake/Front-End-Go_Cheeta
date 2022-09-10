@@ -1,0 +1,10 @@
+a.nav-link {
+    color: black;
+    font-weight: 700;
+    padding-left: 38px !important;
+}
+
+.me-auto.navbar-nav {
+    margin-left: auto;
+    margin-right: auto;
+}
