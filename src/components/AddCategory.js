@@ -29,6 +29,20 @@ function AddCategory() {
     const [bname, setbname] = useState('');
     const [c_id, setc_id] = useState('');
 
+    let [branch, setbranch] = useState([]);
+
+    React.useEffect(() => {
+        axios.get('/view/branch-list')
+            .then(res => {
+
+                console.log("res");
+                console.log(res.data.data);
+                setbranch(res.data.data);
+            })
+            .catch((error) => {
+            })
+    }, []);
+
 
     let history = useNavigate();
 
@@ -155,15 +169,17 @@ function AddCategory() {
                                             {cnameError}
                                         </small>
                                     </div>
+
                                     <div className="col-lg-6 md-6 xs-12">
-                                        <Form.Group controlId="formBasicLastName">
-                                            <Form.Label>Branch Name<span className="text-danger">*</span></Form.Label>
-                                            <Form.Control onChange={e => setbname(e.target.value)} type="text" placeholder="Enter City" />
-                                        </Form.Group>
-                                        <small id="emailHelp" className="text-danger form-text">
-                                            {bnameError}
-                                        </small>
-                                    </div>
+                                     <Form.Group controlId="formBasicUserName" className="mt-3">
+                                        <Form.Label>Branch Name<span className="text-danger">*</span></Form.Label>
+                                        <select className='form-control'  onClick={e => setbname(e.target.value)}>
+                                        {branch.map((option) => (
+                                        <option value={option.branch_code}  >{option.branch_name}</option>
+                                        ))}
+                                         </select>
+                                     </Form.Group>
+                                </div>
 
                                 </div>
 

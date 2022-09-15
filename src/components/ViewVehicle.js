@@ -21,7 +21,7 @@ function ViewVehicle() {
     const [v_no, setv_no] = useState('');
     const [searchVal, setSearchVal] = useState('');
     const [showLogout, setShowLogout] = useState(false);
-    let [vehicle, setvehicle] = useState([]);
+    let [vehicles, setvehicles] = useState([]);
 
     React.useEffect(() => {
         axios.get('/view/vehicle-list')
@@ -29,7 +29,7 @@ function ViewVehicle() {
 
                 console.log("res");
                 console.log(res.data.data);
-                setvehicle(res.data.data);
+                setvehicles(res.data.data);
             })
             .catch((error) => {
             })
@@ -48,11 +48,11 @@ function ViewVehicle() {
                 console.log(res.data.data);
                 // setusers(res.data.data);
 
-                setvehicle(([res.data.data]));
+                setvehicles(([res.data.data]));
                 // setpageNumArr([]);
 
-                console.log("vehicle");
-                console.log(vehicle);
+                console.log("vehicles");
+                console.log(vehicles);
 
 
             })
@@ -83,7 +83,7 @@ function ViewVehicle() {
                             </tr>
                         </thead>
                         <tbody>
-                            {vehicle.length > 0 ? vehicle.map((item) => {
+                            {vehicles.length > 0 ? vehicles.map((item) => {
                                 return (
                                     <tr>
                                         <td>{item.vehicle_no}</td>

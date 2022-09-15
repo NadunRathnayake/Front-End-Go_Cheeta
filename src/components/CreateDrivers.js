@@ -37,6 +37,36 @@ function Register() {
     const [pass, setpass] = useState('');
     const [conPass, setConPassword] = useState('');
 
+    let [vehicles, setvehicles] = useState([]);
+    let [branch, setbranch] = useState([]);
+
+    React.useEffect(() => {
+        axios.get('/view/vehicle-list')
+            .then(res => {
+
+                console.log("res");
+                console.log(res.data.data);
+                setvehicles(res.data.data);
+            })
+            .catch((error) => {
+            })
+    }, []);
+
+
+    
+
+    React.useEffect(() => {
+        axios.get('/view/branch-list')
+            .then(res => {
+
+                console.log("res");
+                console.log(res.data.data);
+                setbranch(res.data.data);
+            })
+            .catch((error) => {
+            })
+    }, []);
+
 
     let history = useNavigate();
 
@@ -240,26 +270,31 @@ function Register() {
                                 </div>
 
                                 <div className='row'>
+                                    <div className="col-lg-6 md-6 xs-12">
+                                     <Form.Group controlId="formBasicUserName" className="mt-3">
+                                        <Form.Label>Branch Name<span className="text-danger">*</span></Form.Label>
+                                        <select className='form-control'  onClick={e => setcode(e.target.value)}>
+                                        {branch.map((option) => (
+                                        <option value={option.branch_code}  >{option.branch_name}</option>
+                                        ))}
+                                         </select>
+                                     </Form.Group>
+                                </div>
+                            
+                                    <div className="col-lg-6 md-6 xs-12">
+                                     <Form.Group controlId="formBasicUserName" className="mt-3">
+                                        <Form.Label>Vehicle No<span className="text-danger">*</span></Form.Label>
+                                        <select className='form-control'  onClick={e => setvehicle(e.target.value)}>
+                                        {vehicles.map((option) => (
+                                        <option value={option.vehicle_no}  >{option.vehicle_no}</option>
+                                        ))}
+                                         </select>
+                                     </Form.Group>    
+                                </div>
                                     
-                                    <div className="col-lg-6 md-6 xs-12">
-                                        <Form.Group controlId="formBasicNumber" className="mt-3">
-                                            <Form.Label>Branch Code<span className="text-danger">*</span></Form.Label>
-                                            <Form.Control onChange={e => setcode(e.target.value)} type="text" placeholder="Enter Branch Code" />
-                                        </Form.Group>
-                                        <small id="emailHelp" className="text-danger form-text">
-                                            {codeError}
-                                        </small>
-                                    </div>
-                                    <div className="col-lg-6 md-6 xs-12">
-                                        <Form.Group controlId="formBasicUserName" className="mt-3">
-                                            <Form.Label>Vehicle Number<span className="text-danger">*</span></Form.Label>
-                                            <Form.Control onChange={e => setvehicle(e.target.value)} type="text" placeholder="Vehicle No" />
-                                        </Form.Group>
 
-                                        <small id="emailHelp" className="text-danger form-text">
-                                            {vehicleError}
-                                        </small>
-                                    </div>
+
+
                                 </div>
 
 

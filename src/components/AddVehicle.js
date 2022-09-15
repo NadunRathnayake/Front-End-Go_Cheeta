@@ -31,6 +31,20 @@ function AddVehicle() {
     const [vcat, setvcat] = useState('');
     const [code, setcode] = useState('');
     const [d_id, setd_id] = useState(''); 
+
+    let [category, setcategory] = useState([]);
+
+    React.useEffect(() => {
+        axios.get('/view/category-list')
+            .then(res => {
+
+                console.log("res");
+                console.log(res.data.data);
+                setcategory(res.data.data);
+            })
+            .catch((error) => {
+            })
+    }, []);
     
 
 
@@ -188,15 +202,17 @@ function AddVehicle() {
 
 
                                 <div className='row'>
-                                    <div className="col-lg-6 md-6 xs-12">
-                                        <Form.Group controlId="formBasicLastName">
-                                            <Form.Label>Vehicle Category<span className="text-danger">*</span></Form.Label>
-                                            <Form.Control onChange={e => setvcat(e.target.value)} type="text" placeholder="Enter Vehicle Category" />
-                                        </Form.Group>
-                                        <small id="emailHelp" className="text-danger form-text">
-                                            {vcatError}
-                                        </small>
-                                    </div>
+                                <div className="col-lg-6 md-6 xs-12">
+                                     <Form.Group controlId="formBasicUserName" className="mt-3">
+                                        <Form.Label>Category<span className="text-danger">*</span></Form.Label>
+                                        <select className='form-control'  onClick={e => setvcat(e.target.value)}>
+                                        {category.map((option) => (
+                                        <option value={option.category_id}  >{option.category_name}</option>
+                                        ))}
+                                         </select>
+                                     </Form.Group>
+                                </div>
+
                                     <div className="col-lg-6 md-6 xs-12">
                                         <Form.Group controlId="formBasicNumber" className="mt-3">
                                             <Form.Label>Branch Code<span className="text-danger">*</span></Form.Label>
