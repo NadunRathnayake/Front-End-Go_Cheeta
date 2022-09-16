@@ -175,7 +175,7 @@ function AddCategory() {
                                         <Form.Label>Branch Name<span className="text-danger">*</span></Form.Label>
                                         <select className='form-control'  onClick={e => setbname(e.target.value)}>
                                         {branch.map((option) => (
-                                        <option value={option.branch_code}  >{option.branch_name}</option>
+                                        <option value={option.branch_name}  >{option.branch_name}</option>
                                         ))}
                                          </select>
                                      </Form.Group>

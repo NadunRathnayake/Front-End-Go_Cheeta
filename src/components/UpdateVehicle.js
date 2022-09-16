@@ -27,6 +27,66 @@ function UpdateVehicle() {
   const [code, setcode] = useState('');
   const [d_id, setd_id] = useState(''); 
 
+
+  let [vehicles, setvehicles] = useState([]);
+  
+
+    React.useEffect(() => {
+        axios.get('/view/vehicle-list')
+            .then(res => {
+
+                console.log("res");
+                console.log(res.data.data);
+                setvehicles(res.data.data);
+            })
+            .catch((error) => {
+            })
+    }, []);
+
+    let [driver, setdriver] = useState([]);
+
+    React.useEffect(() => {
+        axios.get('/view/driver-list')
+            .then(res => {
+
+                console.log("res");
+                console.log(res.data.data);
+                setdriver(res.data.data);
+            })
+            .catch((error) => {
+            })
+    }, []);
+
+    let [branch, setbranch] = useState([]);
+
+    React.useEffect(() => {
+        axios.get('/view/branch-list')
+            .then(res => {
+
+                console.log("res");
+                console.log(res.data.data);
+                setbranch(res.data.data);
+            })
+            .catch((error) => {
+            })
+    }, []);
+
+
+
+    let [category, setcategory] = useState([]);
+
+    React.useEffect(() => {
+        axios.get('/view/category-list')
+            .then(res => {
+
+                console.log("res");
+                console.log(res.data.data);
+                setcategory(res.data.data);
+            })
+            .catch((error) => {
+            })
+    }, []);
+
    
   const reqBody = {
     id: params.id
@@ -40,11 +100,6 @@ function UpdateVehicle() {
 
           console.log(res.data.data);
           setdata(res.data.data)
-
-          console.log("users");
-          console.log(data);
-
-
       })
       .catch((error) => {
       })
@@ -53,14 +108,7 @@ function UpdateVehicle() {
 
 
 
-  const handleValidation = (event) => {
-    let formIsValid = false;
 
-    
-
-    
-    return formIsValid;
-  };
 
   const handelSubmit = (e) => {
     e.preventDefault();
@@ -126,39 +174,56 @@ function UpdateVehicle() {
                       <Form.Control onChange={e => setv_no(e.target.value)} type="text" defaultValue={data.vehicle_no} placeholder="Enter Vehicle Number" readOnly />
                     </Form.Group>
                   </div>
+
                   <div className="col-lg-6 md-6 xs-12">
-                    <Form.Group controlId="formBasicFirstName" className="text-left font-weight-bold">
-                      <Form.Label >Vehicle Model <span className="text-danger">*</span></Form.Label>
-                      <Form.Control onChange={e => setvmodel(e.target.value)} defaultValue={data.vehicle_model} type="text" placeholder="Enter Vehicle Model" />
+                    <Form.Group controlId="formBasicUserName" className="mt-3">
+                      <Form.Label>Vehicle Model<span className="text-danger">*</span></Form.Label>
+                      <Form.Control onChange={e => setvmodel(e.target.value)} type="text" defaultValue={data.vehicle_model} placeholder="Enter Vehicle Model"  />
                     </Form.Group>
                   </div>
+
                 </div>
 
 
                 <div className='row'>
-                  <div className="col-lg-6 md-6 xs-12">
-                    <Form.Group controlId="formBasicLastName" className="">
-                      <Form.Label>Vehicle Category <span className="text-danger">*</span></Form.Label>
-                      <Form.Control onChange={e => setvcat(e.target.value)} type="text" defaultValue={data.vehicle_category} placeholder="Enter The Category" />
+                   <div className="col-lg-6 md-6 xs-12">
+                    <Form.Group controlId="formBasicUserName" className="mt-3">
+                      <Form.Label>Vehicle Category<span className="text-danger">*</span></Form.Label>
+                      <select className='form-control' defaultValue={data.vehicle_category} onClick={e => setvcat(e.target.value)}>
+                        {category.map((option) => (
+                          <option value={option.category_name} defaultValue={data.vehicle_category} >{option.category_name}</option>
+                        ))}
+                      </select>
                     </Form.Group>
-                   </div>
+                  </div>
 
                    <div className="col-lg-6 md-6 xs-12">
-                    <Form.Group controlId="formBasicLastName" className="">
-                      <Form.Label>Branch Code <span className="text-danger">*</span></Form.Label>
-                      <Form.Control onChange={e => setcode(e.target.value)} type="text" defaultValue={data.branch_code} placeholder="Enter Branch Code" />
+                    <Form.Group controlId="formBasicUserName" className="mt-3">
+                      <Form.Label>Branch Code<span className="text-danger">*</span></Form.Label>
+                      <select className='form-control' defaultValue={data.branch_code} onClick={e => setcode(e.target.value)}>
+                        {branch.map((option) => (
+                          <option value={option.branch_name} defaultValue={data.branch_code} >{option.branch_code}</option>
+                        ))}
+                      </select>
                     </Form.Group>
-                   </div>
+                  </div>
+
+
+
                 </div>
 
 
                 <div className='row'>
-                  <div className="col-lg-6 md-6 xs-12">
-                    <Form.Group controlId="formBasicLastName" className="">
-                      <Form.Label>Driver ID <span className="text-danger">*</span></Form.Label>
-                      <Form.Control onChange={e => setd_id(e.target.value)} type="text" defaultValue={data.driver_id} placeholder="Enter The Driver ID" />
+                <div className="col-lg-6 md-6 xs-12">
+                    <Form.Group controlId="formBasicUserName" className="mt-3">
+                      <Form.Label>Driver ID<span className="text-danger">*</span></Form.Label>
+                      <select className='form-control' defaultValue={data.driver_id} onClick={e => setd_id(e.target.value)}>
+                        {driver.map((option) => (
+                          <option value={option.driver_id} defaultValue={data.driver_id} >{option.driver_id}</option>
+                        ))}
+                      </select>
                     </Form.Group>
-                   </div>
+                  </div>
                 </div>
 
 

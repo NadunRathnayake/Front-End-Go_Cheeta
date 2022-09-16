@@ -39,6 +39,36 @@ function DriverEdit() {
     id: params.id
   };
 
+  let [branch, setbranch] = useState([]);
+
+    React.useEffect(() => {
+        axios.get('/view/branch-list')
+            .then(res => {
+
+                console.log("res");
+                console.log(res.data.data);
+                setbranch(res.data.data);
+            })
+            .catch((error) => {
+            })
+    }, []);
+
+
+
+
+  let [vehicles, setvehicles] = useState([]);
+
+  React.useEffect(() => {
+      axios.get('/view/vehicle-list')
+          .then(res => {
+
+              console.log("res");
+              console.log(res.data.data);
+              setvehicles(res.data.data);
+          })
+          .catch((error) => {
+          })
+  }, []);
 
   React.useEffect(() => {
 
@@ -160,7 +190,7 @@ function DriverEdit() {
                   <div className="col-lg-6 md-6 xs-12">
                     <Form.Group controlId="formBasicFirstName" className="text-left font-weight-bold">
                       <Form.Label >First Name <span className="text-danger">*</span></Form.Label>
-                      <Form.Control onChange={e => setfname(e.target.value)} defaultValue={data.f_name} type="text" placeholder="Enter first name" />
+                      <Form.Control onChange={e => setfname(e.target.value)} defaultValue={data.f_name} type="text" placeholder="Enter first name" readOnly/>
                     </Form.Group>
                   </div>
                 </div>
@@ -170,7 +200,7 @@ function DriverEdit() {
                   <div className="col-lg-6 md-6 xs-12">
                     <Form.Group controlId="formBasicLastName" className="">
                       <Form.Label>Last Name <span className="text-danger">*</span></Form.Label>
-                      <Form.Control onChange={e => setlname(e.target.value)} type="text" defaultValue={data.l_name} placeholder="Enter last name" />
+                      <Form.Control onChange={e => setlname(e.target.value)} type="text" defaultValue={data.l_name} placeholder="Enter last name"  readOnly/>
                     </Form.Group>
                    </div>
                   <div className="col-lg-6 md-6 xs-12">
@@ -182,24 +212,28 @@ function DriverEdit() {
                 </div>
 
                 <div className='row'>
-
-                <div className="col-lg-6 md-6 xs-12">
+                  <div className="col-lg-6 md-6 xs-12">
                     <Form.Group controlId="formBasicUserName" className="mt-3">
                       <Form.Label>Branch Code<span className="text-danger">*</span></Form.Label>
-                      <Form.Control onChange={e => setcode(e.target.value)} type="text" defaultValue={data.branch_code} placeholder="Branch Code" />
+                      <select className='form-control' defaultValue={data.branch_code} onClick={e => setcode(e.target.value)}>
+                        {branch.map((option) => (
+                          <option value={option.branch_name} defaultValue={data.branch_code} >{option.branch_code}</option>
+                        ))}
+                      </select>
                     </Form.Group>
                   </div>
 
+
                   <div className="col-lg-6 md-6 xs-12">
-                    <Form.Group controlId="formBasicEmail" className="mt-3">
-                      <Form.Label>Vehicle Number <span className="text-danger">*</span></Form.Label>
-                      <Form.Control onChange={e => setvehicle(e.target.value)} type="email" defaultValue={data.vehicle_no} placeholder="Vehicle Number" />
+                    <Form.Group controlId="formBasicUserName" className="mt-3">
+                      <Form.Label>Vehicle Number<span className="text-danger">*</span></Form.Label>
+                      <select className='form-control' defaultValue={data.vehicle_no} onClick={e => setvehicle(e.target.value)}>
+                        {vehicles.map((option) => (
+                          <option value={option.vehicle_no} defaultValue={data.vehicle_no} >{option.vehicle_no}</option>
+                        ))}
+                      </select>
                     </Form.Group>
-                    <small id="emailHelp" className="text-danger form-text">
-                      {emailError}
-                    </small>
-                  </div>
-                  
+                  </div> 
                 </div>
 
                 <div className='pwSection'>

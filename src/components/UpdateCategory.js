@@ -24,6 +24,21 @@ function UpdateCategory() {
   const [cname, setcname] = useState('');
   const [bname, setbname] = useState('');
 
+  let [branch, setbranch] = useState([]);
+
+  React.useEffect(() => {
+      axios.get('/view/branch-list')
+          .then(res => {
+
+              console.log("res");
+              console.log(res.data.data);
+              setbranch(res.data.data);
+          })
+          .catch((error) => {
+          })
+  }, []);
+
+
    
   const reqBody = {
     id: params.id
@@ -127,12 +142,18 @@ function UpdateCategory() {
                       <Form.Control onChange={e => setcname(e.target.value)} defaultValue={data.category_name} type="text" placeholder="Enter Category Name" />
                     </Form.Group>
                   </div>
-                  <div className="col-lg-6 md-6 xs-12">
-                    <Form.Group controlId="formBasicLastName" className="">
-                      <Form.Label>Branch Name <span className="text-danger">*</span></Form.Label>
-                      <Form.Control onChange={e => setbname(e.target.value)} type="text" defaultValue={data.branch_name} placeholder="Enter The Branch Name" />
+                  
+                   <div className="col-lg-6 md-6 xs-12">
+                    <Form.Group controlId="formBasicUserName" className="mt-3">
+                      <Form.Label>Branch Name<span className="text-danger">*</span></Form.Label>
+                      <select className='form-control' defaultValue={data.branch_name} onClick={e => setbname(e.target.value)}>
+                        {branch.map((option) => (
+                          <option value={option.branch_name} defaultValue={data.branch_name} >{option.branch_name}</option>
+                        ))}
+                      </select>
                     </Form.Group>
-                   </div>
+                  </div>
+
                 </div>
 
                 <Col className="text-end mt-5">
