@@ -37,7 +37,10 @@
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
     "react-toastify": "^8.2.0",
+    "react-uuid": "^1.0.3",
     "styled-components": "^5.3.5",
+    "uniqid": "^5.4.0",
+    "uuid": "^9.0.0",
     "vue-multiselect": "^2.1.6",
     "vue-select": "^3.18.3",
     "web-vitals": "^2.1.4"

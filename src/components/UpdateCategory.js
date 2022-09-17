@@ -142,7 +142,7 @@ function UpdateCategory() {
                       <Form.Control onChange={e => setcname(e.target.value)} defaultValue={data.category_name} type="text" placeholder="Enter Category Name" />
                     </Form.Group>
                   </div>
-                  
+
                    <div className="col-lg-6 md-6 xs-12">
                     <Form.Group controlId="formBasicUserName" className="mt-3">
                       <Form.Label>Branch Name<span className="text-danger">*</span></Form.Label>
@@ -160,10 +160,6 @@ function UpdateCategory() {
                   <Link className="edit-link" path="/edit-category"
                     to="/edit-category">
                     <Button className="editBtn" variant="info" >Back</Button>
-                  </Link>{' '}
-                  <Link className="edit-link" path="/show-all-users"
-                    to="/show-all-users">
-                    <Button className="editBtn" variant="danger" type='clear'> View List</Button>
                   </Link>{' '}
                   <Button onClick={e => handelSubmit(e)} variant="success btn-block" type="submit" className="">
                     Update

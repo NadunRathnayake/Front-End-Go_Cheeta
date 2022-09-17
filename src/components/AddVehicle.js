@@ -143,7 +143,7 @@ function AddVehicle() {
 
                         toast.success('Vehicle Added successfully!', { position: toast.POSITION.TOP_RIGHT })
 
-                        history('/view-drivers');
+                        history('/view-vehicle');
 
                     } else if(res.data.code === 500) {
 
@@ -238,13 +238,9 @@ function AddVehicle() {
                                 </div>
 
                                 <Col className="text-end mt-5">
-                                    <Link className="edit-link" path="/show-all-users"
-                                        to="/show-all-users">
+                                    <Link className="edit-link" path="/Dashboard"
+                                        to="/Dashboard">
                                         <Button className="editBtn" variant="info" >Back</Button>
-                                    </Link>{' '}
-                                    <Link className="edit-link" path="/show-all-users"
-                                        to="/show-all-users">
-                                        <Button className="editBtn" variant="danger"> Cancel</Button>
                                     </Link>{' '}
                                     <Button onClick={e => handelSubmit(e)} variant="success btn-block" type="submit" className={btnDisabled===1?"disabled":""}>
                                         Save

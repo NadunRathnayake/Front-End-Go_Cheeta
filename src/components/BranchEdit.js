@@ -136,13 +136,9 @@ function BranchEdit() {
                 </div>
 
                 <Col className="text-end mt-5">
-                  <Link className="edit-link" path="/show-all-users"
-                    to="/show-all-users">
+                  <Link className="edit-link" path="/edit-branch-list"
+                    to="/edit-branch-list">
                     <Button className="editBtn" variant="info" >Back</Button>
-                  </Link>{' '}
-                  <Link className="edit-link" path="/show-all-users"
-                    to="/show-all-users">
-                    <Button className="editBtn" variant="danger"> Cancel</Button>
                   </Link>{' '}
                   <Button onClick={e => handelSubmit(e)} variant="success btn-block" type="submit" className="">
                     Update

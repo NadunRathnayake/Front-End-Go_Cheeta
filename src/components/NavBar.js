@@ -21,9 +21,8 @@ function navigationbar() {
             </NavDropdown>
 
             <NavDropdown title="Bookings" id="collasible-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">View Bookings</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">Edit Bookings</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">Confirm Bookings</NavDropdown.Item>
+              <NavDropdown.Item href="/view-booking">View Bookings</NavDropdown.Item>
+              <NavDropdown.Item href="/edit-booking">Confirm Bookings</NavDropdown.Item>
               <NavDropdown.Divider />
             </NavDropdown>
 

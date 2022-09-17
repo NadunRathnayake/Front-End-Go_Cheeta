@@ -22,6 +22,10 @@ import AddVehicle from './components/AddVehicle';
 import ViewVehicle from './components/ViewVehicle';
 import EditVehicle from './components/EditVehicle';
 import UpdateVehicle from './components/UpdateVehicle';
+import Booking from './components/Booking';
+import EditBooking from './components/EditBooking';
+import UpdateBooking from './components/UpdateBooking';
+import ViewBooking from './components/ViewBooking';
 
 function App() {
 
@@ -69,6 +73,10 @@ function App() {
             <Route path='/view-vehicle' element={<ViewVehicle />} />
             <Route path='/edit-vehicle' element={<EditVehicle />} />
             <Route path='/update-vehicle/:id' element={<UpdateVehicle />} />
+            <Route path='/booking' element={<Booking/>} />
+            <Route path='/edit-booking' element={<EditBooking/>} />
+            <Route path='/update-booking/:id' element={<UpdateBooking/>} />
+            <Route path='/view-booking' element={<ViewBooking/>} />
 
         </Routes>
       </Router>
