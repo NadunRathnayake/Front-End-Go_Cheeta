@@ -48,7 +48,7 @@ function Header() {
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Col lg={2} md={2} sm={22} className="rext-center p-2">
-              <Navbar.Brand href="#home">Go Cheeta</Navbar.Brand>
+              <Navbar.Brand href="/home">Go Cheeta</Navbar.Brand>
             </Col>
             <Col lg={9} md={9} sm={9} className="">
 

@@ -19,7 +19,7 @@ function EditBooking() {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-    const [nic, setnic] = useState('');
+    const [bkID, setbkID] = useState('');
     const [searchVal, setSearchVal] = useState('');
     const [showLogout, setShowLogout] = useState(false);
     let [booking, setbooking] = useState([]);
@@ -38,7 +38,7 @@ function EditBooking() {
 
     function handelSubmitDelete(id) {
         setShow(true);
-        setnic(id);
+        setbkID(id);
 
         console.log("id");
         console.log(id);
@@ -47,7 +47,7 @@ function EditBooking() {
     function confirmDelete() {
         setShow(false);
 
-        axios.delete('/delete/category/' + nic)
+        axios.delete('/delete/booking/' + bkID)
             .then(res => {
 
                 if (res.data.code == 200) {
@@ -177,9 +177,9 @@ function EditBooking() {
 
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
-                <Modal.Title>Delete Confirmation</Modal.Title>
+                <Modal.Title>Delete!</Modal.Title>
                 </Modal.Header>
-                <Modal.Body>This action cannot be undone, are you sure you want to delete?</Modal.Body>
+                <Modal.Body>Are you sure fot delete this data?</Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleClose}>
                         No

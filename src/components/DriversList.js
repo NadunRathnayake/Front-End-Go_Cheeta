@@ -19,7 +19,7 @@ function ShowDrivers() {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-    const [driverId, setdriverId] = useState('');
+    const [driver_id, setdriver_id] = useState('');
     const [searchVal, setSearchVal] = useState('');
     const [showLogout, setShowLogout] = useState(false);
     let [driver, setdriver] = useState([]);
@@ -38,7 +38,7 @@ function ShowDrivers() {
 
     function handelSubmitDelete(id) {
         setShow(true);
-        setdriverId(id);
+        setdriver_id(id);
 
         console.log("id");
         console.log(id);
@@ -47,7 +47,7 @@ function ShowDrivers() {
     function confirmDelete() {
         setShow(false);
 
-        axios.delete('/delete/driver/' + driverId)
+        axios.delete('/delete/driver/' + driver_id)
             .then(res => {
 
                 if (res.data.code == 200) {
@@ -175,9 +175,9 @@ function ShowDrivers() {
 
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
-                <Modal.Title>Delete Confirmation</Modal.Title>
+                <Modal.Title>Delete!</Modal.Title>
                 </Modal.Header>
-                <Modal.Body>This action cannot be undone, are you sure you want to delete?</Modal.Body>
+                <Modal.Body>Are you sure fot delete this data?</Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleClose}>
                         No

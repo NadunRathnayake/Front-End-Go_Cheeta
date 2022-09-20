@@ -167,9 +167,9 @@ function EditBranchList() {
 
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
-                <Modal.Title>Delete Confirmation</Modal.Title>
+                <Modal.Title>Delete!</Modal.Title>
                 </Modal.Header>
-                <Modal.Body>This action cannot be undone, are you sure you want to delete?</Modal.Body>
+                <Modal.Body>Are you sure fot delete this data?</Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleClose}>
                         No

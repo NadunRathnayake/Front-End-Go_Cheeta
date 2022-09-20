@@ -8,8 +8,6 @@ import axios from "../Services/axio";
 import { Container, Row, Col, Card } from 'react-bootstrap'
 
 import Header from './Header';
-import Slider from './NavBar';
-import Footer from './Footer';
 import LogoutModel from './LogoutModel';
 import { BsPersonFill, BsPersonPlusFill, BsPersonLinesFill, BsTextRight, BsPauseFill } from "react-icons/bs";
 import '../css/addUser.css'
@@ -17,7 +15,7 @@ import Logout from './Logout';
 import { pick } from 'lodash';
 
 
-function AddBranch() {
+function Addbooking() {
     
     const [nicError, setnicError] = useState('');
     const [cust_nameError, setcust_nameError] = useState('');
@@ -214,7 +212,6 @@ function AddBranch() {
         <>
             <Header />
             <Row className="">
-                <Slider />
                 <Col lg={10} md={10} sm={10} className="shadow-sm rounded-lg test-left p-5">
 
                     <h3 className="dashboard">Place a Booking</h3>
@@ -328,11 +325,9 @@ function AddBranch() {
                     </Card>
                 </Col>
             </Row>
-            <Footer />
-
             <LogoutModel show={showLogout} close={() => setShowLogout(false)} />
         </>
     );
 }
 
-export default AddBranch
+export default Addbooking

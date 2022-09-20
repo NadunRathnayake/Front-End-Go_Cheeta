@@ -4,6 +4,7 @@ import { Navigate, Outlet } from 'react-router-dom';
 import './App.css';
 import Login from './components/Login';
 import Dashboard from './components/Dashboard';
+import Ddashboard from './components/Driverdashboard';
 import ShowCustomers from './components/ShowCustomers';
 import ViewDrivers from './components/ViewDrivers';
 import DriverEdit from './components/DriverEdit';
@@ -26,6 +27,11 @@ import Booking from './components/Booking';
 import EditBooking from './components/EditBooking';
 import UpdateBooking from './components/UpdateBooking';
 import ViewBooking from './components/ViewBooking';
+import AddCustomer from './components/AddCustomer';
+import Home from './components/Home';
+import CustomerDashboard from './components/CustomerDashboard';
+import Driverdashboard from './components/Driverdashboard';
+import CustomerSearch from './components/CustomerSearch';
 
 function App() {
 
@@ -51,10 +57,10 @@ function App() {
    
       <Router>
         <Routes>
-          <Route index element={<Login />} />
-          <Route path="/" element={<Login />} />
-            <Route path="/dashboard" element={<Dashboard />} />
+          <Route index element={<Home />} />
+          <Route path="/login" element={<Login />} />
             <Route path='/dashboard' element={<Dashboard />} />
+            <Route path='/driver-dashboard' element={<Ddashboard />} />
             <Route path='/show-all-customers' element={<ShowCustomers />} />
             <Route path='/driver-edit/:id' element={<DriverEdit />} />
             <Route path='/create-drivers' element={<CreateDrivers />} />
@@ -77,6 +83,12 @@ function App() {
             <Route path='/edit-booking' element={<EditBooking/>} />
             <Route path='/update-booking/:id' element={<UpdateBooking/>} />
             <Route path='/view-booking' element={<ViewBooking/>} />
+            <Route path='/add-customer' element={<AddCustomer/>} />
+            <Route path='/home' element={<Home/>} />
+            <Route path='/customer-dashboard' element={<CustomerDashboard/>} />
+            <Route path='/driver-dashboard' element={<Driverdashboard/>} />
+            <Route path='/customer-search' element={<CustomerSearch/>} />
+
 
         </Routes>
       </Router>

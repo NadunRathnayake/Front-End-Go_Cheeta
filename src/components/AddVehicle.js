@@ -207,7 +207,7 @@ function AddVehicle() {
                                         <Form.Label>Category<span className="text-danger">*</span></Form.Label>
                                         <select className='form-control'  onClick={e => setvcat(e.target.value)}>
                                         {category.map((option) => (
-                                        <option value={option.category_id}  >{option.category_name}</option>
+                                        <option value={option.category_name}  >{option.category_name}</option>
                                         ))}
                                          </select>
                                      </Form.Group>
